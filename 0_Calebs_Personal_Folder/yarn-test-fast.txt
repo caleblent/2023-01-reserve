@@ -1,0 +1,609 @@
+PS C:\code-workspace\protocol> yarn test:fast
+Nothing to compile
+No need to generate any newer typings.
+
+
+
+  DeployerRegistry contract #fast
+    Deployment
+      ✔ Should deploy registry correctly
+    Ownership
+      ✔ Should allow owner to transfer ownership (151ms)
+    Register/Unregister
+      ✔ Should allow owner to register a new version successfully (133ms)
+      ✔ Should handle multiple deployers correctly (308ms)
+      ✔ Should perform validations on register
+      ✔ Should allow owner to unregister a version successfully (184ms)
+
+
+  DeployerRegistry contract #fast
+    Deployment
+      ✔ Should deploy registry correctly
+    Ownership
+      ✔ Should allow owner to transfer ownership (129ms)
+    Register/Unregister
+      ✔ Should allow owner to register a new version successfully (123ms)
+      ✔ Should handle multiple deployers correctly (232ms)
+      ✔ Should perform validations on register (122ms)
+      ✔ Should allow owner to unregister a version successfully (312ms)
+
+
+  DeployerP0 contract #fast
+    Validations
+      ✔ Should validate addresses in constructor (1588ms)
+    Deployment
+      ✔ Should setup values correctly
+      ✔ Should deploy required contracts
+      ✔ Should setup versioning correctly (110ms)
+      ✔ Should emit event (690ms)
+      ✔ Should not allow empty name (375ms)
+      ✔ Should not allow empty symbol (551ms)
+      ✔ Should not allow empty mandate (573ms)
+      ✔ Should not allow invalid owner address
+      ✔ Should setup Main correctly (324ms)
+      ✔ Should setup RToken correctly
+      ✔ Should setup Furnace correctly
+      ✔ Should setup revenue traders
+      ✔ Should setup BackingManager correctly
+      ✔ Should setup AssetRegistry correctly
+      ✔ Should setup BasketHandler correctly
+      ✔ Should setup Distributor correctly
+      ✔ Should setup Broker correctly
+      ✔ Should setup stRSR correctly
+
+
+  DeployerP1 contract #fast
+    Validations
+      ✔ Should validate addresses in constructor (1444ms)
+    Deployment
+      ✔ Should setup values correctly
+      ✔ Should deploy required contracts
+      ✔ Should setup versioning correctly (227ms)
+      ✔ Should emit event (1141ms)
+      ✔ Should not allow empty name (1478ms)
+      ✔ Should not allow empty symbol (990ms)
+      ✔ Should not allow empty mandate (977ms)
+      ✔ Should not allow invalid owner address
+      ✔ Should setup Main correctly (318ms)
+      ✔ Should setup RToken correctly
+      ✔ Should setup Furnace correctly
+      ✔ Should setup revenue traders
+      ✔ Should setup BackingManager correctly
+      ✔ Should setup AssetRegistry correctly
+      ✔ Should setup BasketHandler correctly
+      ✔ Should setup Distributor correctly
+      ✔ Should setup Broker correctly
+      ✔ Should setup stRSR correctly
+
+
+Snapshot Summary
+ › 5 snapshots obsolete from 1 test suite. To remove them all, re-run mocha with `--update` to update them.
+   ↳ test/Broker.test.ts
+       • BrokerP1 contract #fast Gas Reporting Initialize Trade  1
+       • BrokerP1 contract #fast Gas Reporting Open Trade  1
+       • BrokerP1 contract #fast Gas Reporting Open Trade  2
+       • BrokerP1 contract #fast Gas Reporting Open Trade  3
+       • BrokerP1 contract #fast Gas Reporting Settle Trade  1
+
+  BrokerP0 contract #fast
+    Deployment
+      ✔ Should setup Broker correctly
+      ✔ Should perform validations on init (131ms)
+    Configuration/State
+      ✔ Should allow to update auctionLength if Owner
+      ✔ Should perform validations on auctionLength
+      ✔ Should allow to update disabled if Owner (258ms)
+    Trade Management
+      ✔ Should not allow to open trade if Disabled (206ms)
+      ✔ Should not allow to open trade if paused (105ms)
+      ✔ Should not allow to open trade if frozen (130ms)
+      ✔ Should not allow to open trade if a trader (1222ms)
+      ✔ Should not allow to report violation if not trade contract (229ms)
+      ✔ Should not allow to report violation if paused or frozen (248ms)
+    Trades
+      ✔ Should initialize trade correctly - only once (798ms)
+      ✔ Should initialize trade with minimum buy amount of at least 1 (448ms)
+      ✔ Should protect against reentrancy when initializing trade (492ms)
+      ✔ Should perform balance and amounts validations on init (296ms)
+      ✔ Should not allow to initialize an unfunded trade (172ms)
+      ✔ Should be able to settle a trade - performing validations (586ms)
+      ✔ Should protect against reentrancy when settling trade (791ms)
+      ✔ Should be able to settle a trade - handles arbitrary funds being sent to trade (754ms)
+      ✔ Should allow anyone to transfer to origin after a trade is complete (682ms)
+    Gas Reporting
+      - Open Trade
+      - Initialize Trade
+      - Settle Trade
+
+
+Snapshot Summary
+ › 5 snapshots obsolete from 1 test suite. To remove them all, re-run mocha with `--update` to update them.
+   ↳ test/Broker.test.ts
+       • BrokerP1 contract #fast Gas Reporting Initialize Trade  1
+       • BrokerP1 contract #fast Gas Reporting Open Trade  1
+       • BrokerP1 contract #fast Gas Reporting Open Trade  2
+       • BrokerP1 contract #fast Gas Reporting Open Trade  3
+       • BrokerP1 contract #fast Gas Reporting Settle Trade  1
+
+  BrokerP1 contract #fast
+    Deployment
+      ✔ Should setup Broker correctly
+      ✔ Should perform validations on init (752ms)
+    Configuration/State
+      ✔ Should allow to update auctionLength if Owner (406ms)
+      ✔ Should perform validations on auctionLength (165ms)
+      ✔ Should allow to update disabled if Owner (345ms)
+    Trade Management
+      ✔ Should not allow to open trade if Disabled (175ms)
+      ✔ Should not allow to open trade if paused (187ms)
+      ✔ Should not allow to open trade if frozen (143ms)
+      ✔ Should not allow to open trade if a trader (955ms)
+      ✔ Should not allow to report violation if not trade contract (136ms)
+      ✔ Should not allow to report violation if paused or frozen (243ms)
+    Trades
+      ✔ Should initialize trade correctly - only once (605ms)
+      ✔ Should initialize trade with minimum buy amount of at least 1 (552ms)
+      ✔ Should protect against reentrancy when initializing trade (466ms)
+      ✔ Should perform balance and amounts validations on init (273ms)
+      ✔ Should not allow to initialize an unfunded trade (197ms)
+      ✔ Should be able to settle a trade - performing validations (733ms)
+      ✔ Should protect against reentrancy when settling trade (495ms)
+      ✔ Should be able to settle a trade - handles arbitrary funds being sent to trade (810ms)
+      ✔ Should allow anyone to transfer to origin after a trade is complete (468ms)
+    Gas Reporting
+      - Open Trade
+      - Initialize Trade
+      - Settle Trade
+
+
+  FurnaceP0 contract
+    Deployment #fast
+      ✔ Deployment should setup Furnace correctly
+      ✔ Deployment does not accept empty period
+      ✔ Deployment does not accept invalid main address
+    Configuration / State #fast
+      ✔ Should allow to update period correctly if Owner and perform validations (107ms)
+      ✔ Should allow to update ratio correctly if Owner and perform validations
+    Do Melt #fast
+      ✔ Should not melt if paused
+      ✔ Should not melt if frozen
+      ✔ Should not melt any funds in the initial block
+      ✔ Should not melt if no funds available (107ms)
+      ✔ Should melt 0 for first period, even if funds available (206ms)
+      ✔ Should allow melt - one period (230ms)
+      ✔ Should allow melt - two periods, all at once (164ms)
+      ✔ Should allow melt - two periods, one at a time (269ms)
+
+
+Snapshot Summary
+ › 17 snapshots obsolete from 1 test suite. To remove them all, re-run mocha with `--update` to update them.
+   ↳ test/Furnace.test.ts
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, all at once 1
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, all at once 2
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 1
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 2
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 3
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 4
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 5
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 6
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 7
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 8
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 9
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 10
+       • FurnaceP1 contract Gas Reporting Melt - Many periods, one after the other 11
+       • FurnaceP1 contract Gas Reporting Melt - One period  1
+       • FurnaceP1 contract Gas Reporting Melt - One period  2
+       • FurnaceP1 contract Gas Reporting Melt - One period  3
+       • FurnaceP1 contract Gas Reporting Melt - One period  4
+
+  FurnaceP1 contract
+    Deployment #fast
+      ✔ Deployment should setup Furnace correctly
+      ✔ Deployment does not accept empty period (320ms)
+      ✔ Deployment does not accept invalid main address (261ms)
+    Configuration / State #fast
+      ✔ Should allow to update period correctly if Owner and perform validations (145ms)
+      ✔ Should allow to update ratio correctly if Owner and perform validations
+    Do Melt #fast
+      ✔ Should not melt if paused
+      ✔ Should not melt if frozen
+      ✔ Should not melt any funds in the initial block
+      ✔ Should not melt if no funds available (105ms)
+      ✔ Should melt 0 for first period, even if funds available (313ms)
+      ✔ Should allow melt - one period (237ms)
+      ✔ Should allow melt - two periods, all at once (196ms)
+      ✔ Should allow melt - two periods, one at a time (251ms)
+
+
+  MainP0 contract
+    Deployment #fast
+      ✔ Should setup Main correctly (215ms)
+      ✔ Should register ERC20s and Assets/Collateral correctly (244ms)
+      ✔ Should register Basket correctly (948ms)
+    Initialization #fast
+      ✔ Should not allow to initialize Main twice
+      ✔ Should prevent granting roles to the zero address
+      ✔ Should not allow to initialize components twice (254ms)
+      ✔ Should perform validations on init (1145ms)
+      ✔ Should emit events on init (1215ms)
+    Pause/Unpause #fast
+      ✔ Should Pause for PAUSER and OWNER (218ms)
+      ✔ Should not allow to Pause/Unpause if not PAUSER or OWNER (182ms)
+      ✔ Should not allow to set PAUSER if not OWNER (186ms)
+      ✔ Should allow to renounce role if OWNER
+      ✔ Should allow to renounce role if PAUSER
+    Freeze/Unfreeze #fast
+      ✔ Should only permit owner to freeze forever (235ms)
+      ✔ A permanent freeze should last forever (117ms)
+      ✔ Should allow unfreeze during short-duration freeze (177ms)
+      ✔ Should allow unfreeze during long-duration freeze (313ms)
+      ✔ Should not allow unfreeze from SHORT_FREEZER or LONG_FREEZER (324ms)
+      ✔ Short freezing should revoke SHORT_FREEZER + eventually thaw on its own (270ms)
+      ✔ Should be able to chain short freeze into long freeze (185ms)
+      ✔ Should not allow to set SHORT_FREEZER if not OWNER (352ms)
+      ✔ Should not allow to set LONG_FREEZER if not OWNER (264ms)
+      ✔ Should allow to renounce SHORT_FREEZER (126ms)
+      ✔ Should allow to renounce LONG_FREEZER (116ms)
+      ✔ Should renounce LONG_FREEZER automatically after 6 uses (298ms)
+      ✔ Should allow to renounce SHORT_FREEZER if OWNER without losing OWNER
+      ✔ Should allow to renounce LONG_FREEZER if OWNER without losing OWNER (116ms)
+      ✔ Should allow to set short freeze properly (234ms)
+      ✔ Should allow to set long freeze properly (190ms)
+    Configuration/State #fast
+      ✔ Should allow to update tradingDelay if OWNER and perform validations (112ms)
+      ✔ Should allow to update maxTradeSlippage if OWNER and perform validations (116ms)
+      ✔ Should allow to update minTradeVolume if OWNER and perform validations
+      ✔ Should allow to update backingBuffer if OWNER and perform validations (102ms)
+      ✔ Should perform validations on for granting allowances
+      ✔ Should not grant allowances when paused
+      ✔ Should not grant allowances when frozen
+      ✔ Should return backing tokens
+      ✔ Should allow to update shortFreeze if OWNER (160ms)
+      ✔ Should allow to update longFreeze if OWNER (178ms)
+
+
+  MainP1 contract
+    Deployment #fast
+      ✔ Should setup Main correctly (308ms)
+      ✔ Should register ERC20s and Assets/Collateral correctly (272ms)
+      ✔ Should register Basket correctly (925ms)
+    Initialization #fast
+      ✔ Should not allow to initialize Main twice
+      ✔ Should prevent granting roles to the zero address
+      ✔ Should not allow to initialize components twice (242ms)
+      ✔ Should perform validations on init (1986ms)
+      ✔ Should emit events on init (1604ms)
+    Pause/Unpause #fast
+      ✔ Should Pause for PAUSER and OWNER (230ms)
+      ✔ Should not allow to Pause/Unpause if not PAUSER or OWNER (146ms)
+      ✔ Should not allow to set PAUSER if not OWNER (176ms)
+      ✔ Should allow to renounce role if OWNER
+      ✔ Should allow to renounce role if PAUSER
+    Freeze/Unfreeze #fast
+      ✔ Should only permit owner to freeze forever (247ms)
+      ✔ A permanent freeze should last forever (157ms)
+      ✔ Should allow unfreeze during short-duration freeze (267ms)
+      ✔ Should allow unfreeze during long-duration freeze (258ms)
+      ✔ Should not allow unfreeze from SHORT_FREEZER or LONG_FREEZER (282ms)
+      ✔ Short freezing should revoke SHORT_FREEZER + eventually thaw on its own (298ms)
+      ✔ Should be able to chain short freeze into long freeze (265ms)
+      ✔ Should not allow to set SHORT_FREEZER if not OWNER (289ms)
+      ✔ Should not allow to set LONG_FREEZER if not OWNER (265ms)
+      ✔ Should allow to renounce SHORT_FREEZER (243ms)
+      ✔ Should allow to renounce LONG_FREEZER (136ms)
+      ✔ Should renounce LONG_FREEZER automatically after 6 uses (223ms)
+      ✔ Should allow to renounce SHORT_FREEZER if OWNER without losing OWNER (116ms)
+      ✔ Should allow to renounce LONG_FREEZER if OWNER without losing OWNER (114ms)
+      ✔ Should allow to set short freeze properly (180ms)
+      ✔ Should allow to set long freeze properly (198ms)
+    Configuration/State #fast
+      ✔ Should allow to update tradingDelay if OWNER and perform validations (108ms)
+      ✔ Should allow to update maxTradeSlippage if OWNER and perform validations (118ms)
+      ✔ Should allow to update minTradeVolume if OWNER and perform validations (128ms)
+      ✔ Should allow to update backingBuffer if OWNER and perform validations (126ms)
+      ✔ Should perform validations on for granting allowances
+      ✔ Should not grant allowances when paused
+      ✔ Should not grant allowances when frozen
+      ✔ Should return backing tokens
+      ✔ Should allow to update shortFreeze if OWNER (260ms)
+      ✔ Should allow to update longFreeze if OWNER (445ms)
+
+Warning: Potentially unsafe deployment of StRSRP1Votes
+
+    You are using the `unsafeAllow.external-library-linking` flag to include external libraries.
+    Make sure you have manually checked that the linked libraries are upgrade safe.
+
+
+  Assets contracts #fast
+    Deployment
+      ✔ Deployment should setup assets correctly (836ms)
+    Prices
+      ✔ Should calculate prices correctly (1452ms)
+      ✔ Should calculate RToken price correctly (1036ms)
+      ✔ Should return (0, 0) if price is zero (1191ms)
+      ✔ Should return 0 price for RTokenAsset in full haircut scenario (1728ms)
+      ✔ Should not revert RToken price if supply is zero (734ms)
+      ✔ Should calculate trade min correctly (103ms)
+      ✔ Should calculate trade min correctly - RToken (231ms)
+      ✔ Should be unpriced if price is stale
+      ✔ Should be unpriced in case of invalid timestamp (265ms)
+      ✔ Should be unpriced in case of invalid answered round (275ms)
+      ✔ Should handle unpriced edge cases for RToken (414ms)
+      ✔ Should be able to refresh saved prices (508ms)
+      ✔ Should not save prices if try/price returns unpriced (707ms)
+      ✔ Should not revert on refresh if unpriced (242ms)
+      ✔ Reverts if Chainlink feed reverts or runs out of gas (364ms)
+      ✔ Should handle lot price correctly (388ms)
+    Constructor validation
+      ✔ Should not allow price timeout to be zero
+      ✔ Should not allow missing chainlink feed
+      ✔ Should not allow missing erc20
+      ✔ Should not allow 0 oracleError
+      ✔ Should not allow FIX_ONE oracleError
+      ✔ Should not allow 0 oracleTimeout
+      ✔ Should not allow maxTradeVolume to be zero
+      ✔ Should validate constructor in RTokenAsset
+
+
+  StRSRP1 contract
+    Deployment #fast
+      ✔ Should setup initial addresses and values correctly (190ms)
+      ✔ Should setup the DomainSeparator for Permit correctly
+      ✔ Should perform validations on init (502ms)
+    Configuration / State #fast
+      ✔ Should allow to update unstakingDelay if Owner and perform validations (153ms)
+      ✔ Should allow to update rewardPeriod if Owner and perform validations (138ms)
+      ✔ Should allow to update rewardRatio if Owner and perform validations (102ms)
+    Remove RSR #fast
+      ✔ Should not allow to remove RSR if caller is not backing manager (106ms)
+      ✔ Should not allow to remove RSR if paused
+      ✔ Should not allow to remove RSR if frozen (114ms)
+      ✔ Should not allow to remove RSR if amount is zero
+      ✔ Should not allow to remove RSR if amount is larger than balance (102ms)
+      ✔ Should allow to remove RSR - Single staker (217ms)
+      ✔ Seize RSR - Single staker after giant unstaking (317ms)
+      ✔ Should allow to remove RSR - Two stakers - Rounded values (520ms)
+      ✔ Should allow to remove RSR - Three stakers - Check Precision (504ms)
+      ✔ Should seize all RSR if required - Mayhem scenario (304ms)
+      ✔ Should round down below MIN_EXCHANGE_RATE - Epsilon mayhem scenario (402ms)
+      ✔ Should not round down at or above MIN_EXCHANGE_RATE - Hyperinflation scenario (399ms)
+      ✔ Should remove RSR from Withdrawers (328ms)
+      ✔ Should remove RSR proportionally from Stakers and Withdrawers (442ms)
+      ✔ Should handle small unstake after a significant RSR seizure (805ms)
+    Transfers #fast
+      ✔ Should transfer stakes between accounts
+      ✔ Should not transfer stakes if no balance
+      ✔ Should not transfer stakes from/to zero address (123ms)
+      ✔ Should not allow transfer/transferFrom to address(this)
+      ✔ Should transferFrom stakes between accounts (169ms)
+      ✔ Should set allowance when using "Permit"
+      ✔ Should perform validations on "Permit" (102ms)
+      ✔ Should not transferFrom stakes if no allowance (137ms)
+      ✔ Should perform validations on approvals
+      ✔ Should allow to increase/decrease allowances (194ms)
+      ✔ Should not decrease allowance when Max allowance pattern is used (128ms)
+      ERC1271 #fast
+        ✔ should not permit without ERC1271 support (107ms)
+        ✔ should permit spend with ERC1271 support (121ms)
+
+
+  RTokenP1 contract
+    Deployment #fast
+      ✔ Deployment should setup RToken correctly (1015ms)
+      ✔ Should setup the DomainSeparator for Permit correctly
+    Configuration #fast
+      ✔ Should allow to set basketsNeeded only from BackingManager (163ms)
+      ✔ Should allow to update issuanceRate if Owner and perform validations (118ms)
+      ✔ Should not allow to set issuanceRate to zero
+      ✔ Should allow to update scalingRedemptionRate if Owner and perform validations (208ms)
+      ✔ Should allow to update redemptionRateFloor if Owner (243ms)
+    Redeem
+      ✔ Should revert if zero amount #fast
+      ✔ Should revert if no balance of RToken #fast (258ms)
+      With issued RTokens
+        ✔ Should redeem if basket is IFFY #fast (591ms)
+        ✔ Should redeem if basket is UNPRICED #fast (618ms)
+        ✔ Should redeem if paused #fast (461ms)
+        ✔ Should revert if frozen #fast
+        ✔ Should revert if empty redemption #fast (887ms)
+        ✔ Should revert if basket is DISABLED #fast (339ms)
+        And redemption throttling
+          ✔ Should revert on overly-large redemption #fast (798ms)
+          ✔ Should allow two redemptions of half value #fast (1171ms)
+    Melt/Mint #fast
+      ✔ Should not melt if paused
+      ✔ Should not melt if frozen
+      ✔ Should allow to melt tokens if caller
+      ✔ Should not allow mint/transfer/transferFrom to address(this) (2918ms)
+      ✔ Should allow to mint tokens when called by backing manager (117ms)
+      ✔ Should not allow setBasketsNeeded to set BU exchange rate to outside [1e-9, 1e9] (133ms)
+      ✔ Should not allow mint to set BU exchange rate to above 1e9
+      ✔ Should not allow melt to set BU exchange rate to below 1e-9
+    Reward Claiming #fast
+      ✔ should not claim rewards when paused
+      ✔ should not claim rewards when frozen
+      ✔ should claim a single reward (127ms)
+    Reward Sweeping #fast
+      ✔ should not sweep rewards when paused
+      ✔ should not sweep rewards when frozen
+      ✔ should not sweep unregistered ERC20
+      ✔ should sweep without liabilities (976ms)
+      ✔ should not sweep with full liabilities (450ms)
+      ✔ should sweep with partial liabilities (504ms)
+      ✔ should single sweep without liabilities (1028ms)
+      ✔ should not single sweep with full liabilities (428ms)
+      ✔ should single sweep with partial liabilities (445ms)
+    Transfers #fast
+      ✔ Should transfer tokens between accounts
+      ✔ Should not transfer if no balance
+      ✔ Should not transfer from/to zero address
+      ✔ Should not allow transfer/transferFrom to address(this)
+      ✔ Should transferFrom between accounts (156ms)
+      ✔ Should set allowance when using "Permit" (126ms)
+      ✔ Should perform validations on "Permit"
+      ✔ Should not transferFrom if no allowance
+      ✔ Should perform validations on approvals
+      ✔ Should allow to increase/decrease allowances (155ms)
+      ✔ Should not decrease allowance when Max allowance pattern is used
+    ERC1271 permit #fast
+      ✔ should not permit without ERC1271 support
+      ✔ should permit spend with ERC1271 support (103ms)
+
+
+  181 passing (2m)
+  3 pending
+
+
+  StRSRP0 contract
+    Deployment #fast
+      ✔ Should setup initial addresses and values correctly
+      ✔ Should setup the DomainSeparator for Permit correctly
+      ✔ Should perform validations on init (101ms)
+    Configuration / State #fast
+      ✔ Should allow to update unstakingDelay if Owner and perform validations (107ms)
+      ✔ Should allow to update rewardPeriod if Owner and perform validations (122ms)
+      ✔ Should allow to update rewardRatio if Owner and perform validations
+    Remove RSR #fast
+      ✔ Should not allow to remove RSR if caller is not backing manager
+      ✔ Should not allow to remove RSR if paused
+      ✔ Should not allow to remove RSR if frozen
+      ✔ Should not allow to remove RSR if amount is zero
+      ✔ Should not allow to remove RSR if amount is larger than balance
+      ✔ Should allow to remove RSR - Single staker (200ms)
+      ✔ Seize RSR - Single staker after giant unstaking (277ms)
+      ✔ Should allow to remove RSR - Two stakers - Rounded values (290ms)
+      ✔ Should allow to remove RSR - Three stakers - Check Precision (336ms)
+      ✔ Should seize all RSR if required - Mayhem scenario (284ms)
+      ✔ Should round down below MIN_EXCHANGE_RATE - Epsilon mayhem scenario (326ms)
+      ✔ Should not round down at or above MIN_EXCHANGE_RATE - Hyperinflation scenario (360ms)
+      ✔ Should remove RSR from Withdrawers (309ms)
+      ✔ Should remove RSR proportionally from Stakers and Withdrawers (409ms)
+      ✔ Should handle small unstake after a significant RSR seizure (703ms)
+    Transfers #fast
+      ✔ Should transfer stakes between accounts
+      ✔ Should not transfer stakes if no balance
+      ✔ Should not transfer stakes from/to zero address
+      ✔ Should not allow transfer/transferFrom to address(this)
+      ✔ Should transferFrom stakes between accounts (137ms)
+      ✔ Should set allowance when using "Permit"
+      ✔ Should perform validations on "Permit" (139ms)
+      ✔ Should not transferFrom stakes if no allowance
+      ✔ Should perform validations on approvals
+      ✔ Should allow to increase/decrease allowances (164ms)
+      ✔ Should not decrease allowance when Max allowance pattern is used (104ms)
+      ERC1271 #fast
+        ✔ should not permit without ERC1271 support
+        ✔ should permit spend with ERC1271 support (118ms)
+
+
+  Collateral contracts
+    Deployment
+      ✔ Deployment should setup collateral correctly #fast (593ms)
+    Prices #fast
+      ✔ Should calculate prices correctly (1189ms)
+      ✔ Should calculate price correctly when ATokens and CTokens appreciate (808ms)
+      ✔ Should be (0, 0) if price is zero (188ms)
+      ✔ Should be unpriced in case of invalid timestamp (216ms)
+      ✔ Should be unpriced in case of invalid answered round (210ms)
+    Non-fiat Collateral #fast
+      ✔ Should not allow missing delayUntilDefault
+      ✔ Should not allow missing uoaPerTargetFeed
+      ✔ Should not allow missing targetPerRefFeed
+      ✔ Should setup collateral correctly (192ms)
+      ✔ Should calculate prices correctly (361ms)
+      ✔ Reverts if Chainlink feed reverts or runs out of gas, maintains status (313ms)
+    CToken Non-fiat Collateral #fast
+      ✔ Should not allow missing delayUntilDefault
+      ✔ Should not allow missing refUnitChainlinkFeed
+      ✔ Should not allow missing targetUnitChainlinkFeed
+      ✔ Should not allow missing comptroller
+      ✔ Should setup collateral correctly (227ms)
+      ✔ Should calculate prices correctly (434ms)
+      ✔ Reverts if Chainlink feed reverts or runs out of gas, maintains status (355ms)
+    Self-Referential Collateral #fast
+      ✔ Should setup collateral correctly (126ms)
+      ✔ Should not allow invalid defaultThreshold
+      ✔ Should calculate prices correctly (239ms)
+      ✔ Reverts if Chainlink feed reverts or runs out of gas, maintains status (134ms)
+    CToken Self-Referential Collateral #fast
+      ✔ Should not allow missing comptroller
+      ✔ Should not allow missing reference erc20 decimals
+      ✔ Should not allow invalid defaultThreshold
+      ✔ Should setup collateral correctly (197ms)
+      ✔ Should calculate prices correctly (788ms)
+      ✔ Reverts if Chainlink feed reverts or runs out of gas, maintains status (198ms)
+    EUR fiat Collateral #fast
+      ✔ Should not allow missing delayUntilDefault
+      ✔ Should not allow missing uoaPerTarget feed
+      ✔ Should not allow missing uoaPerRef feed
+      ✔ Should not revert during refresh when price2 is 0 (103ms)
+      ✔ Should setup collateral correctly (156ms)
+      ✔ Should calculate prices correctly (270ms)
+      ✔ Reverts if Chainlink feed reverts or runs out of gas, maintains status (226ms)
+
+
+  RTokenP0 contract
+    Deployment #fast
+      ✔ Deployment should setup RToken correctly (977ms)
+      ✔ Should setup the DomainSeparator for Permit correctly
+    Configuration #fast
+      ✔ Should allow to set basketsNeeded only from BackingManager (113ms)
+      ✔ Should allow to update issuanceRate if Owner and perform validations
+      ✔ Should not allow to set issuanceRate to zero
+      ✔ Should allow to update scalingRedemptionRate if Owner and perform validations (253ms)
+      ✔ Should allow to update redemptionRateFloor if Owner (212ms)
+    Redeem
+      ✔ Should revert if zero amount #fast
+      ✔ Should revert if no balance of RToken #fast (223ms)
+      With issued RTokens
+        ✔ Should redeem if basket is IFFY #fast (490ms)
+        ✔ Should redeem if basket is UNPRICED #fast (344ms)
+        ✔ Should redeem if paused #fast (574ms)
+        ✔ Should revert if frozen #fast
+        ✔ Should revert if empty redemption #fast (1183ms)
+        ✔ Should revert if basket is DISABLED #fast (225ms)
+        And redemption throttling
+          ✔ Should revert on overly-large redemption #fast (610ms)
+          ✔ Should allow two redemptions of half value #fast (1081ms)
+    Melt/Mint #fast
+      ✔ Should not melt if paused
+      ✔ Should not melt if frozen
+      ✔ Should allow to melt tokens if caller
+      ✔ Should not allow mint/transfer/transferFrom to address(this)
+      ✔ Should allow to mint tokens when called by backing manager
+      ✔ Should not allow setBasketsNeeded to set BU exchange rate to outside [1e-9, 1e9]
+      ✔ Should not allow mint to set BU exchange rate to above 1e9
+      ✔ Should not allow melt to set BU exchange rate to below 1e-9
+    Reward Claiming #fast
+      ✔ should not claim rewards when paused (147ms)
+      ✔ should not claim rewards when frozen
+      ✔ should claim a single reward
+    Reward Sweeping #fast
+      ✔ should not sweep rewards when paused
+      ✔ should not sweep rewards when frozen
+      ✔ should not sweep unregistered ERC20
+      ✔ should sweep without liabilities (1196ms)
+      ✔ should not sweep with full liabilities (528ms)
+      ✔ should sweep with partial liabilities (500ms)
+      ✔ should single sweep without liabilities (941ms)
+      ✔ should not single sweep with full liabilities (409ms)
+      ✔ should single sweep with partial liabilities (413ms)
+    Transfers #fast
+      ✔ Should transfer tokens between accounts
+      ✔ Should not transfer if no balance
+      ✔ Should not transfer from/to zero address
+      ✔ Should not allow transfer/transferFrom to address(this)
+      ✔ Should transferFrom between accounts (128ms)
+      ✔ Should set allowance when using "Permit"
+      ✔ Should perform validations on "Permit"
+      ✔ Should not transferFrom if no allowance
+      ✔ Should perform validations on approvals
+      ✔ Should allow to increase/decrease allowances (135ms)
+      ✔ Should not decrease allowance when Max allowance pattern is used
+    ERC1271 permit #fast
+      ✔ should not permit without ERC1271 support
+      ✔ should permit spend with ERC1271 support
+
+
+  242 passing (2m)
+  3 pending
