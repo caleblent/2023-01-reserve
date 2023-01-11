@@ -61,7 +61,7 @@ contract DeployerP0 is IDeployer, Versioned {
         address owner,
         DeploymentParams memory params
     ) external returns (address) {
-        require(owner != address(0) && owner != address(this), "invalid owner");
+        require(owner != address(0) && owner != address(this), "invalid owner"); // @halborn audit: FIX for HAL-01
 
         MainP0 main = new MainP0();
 

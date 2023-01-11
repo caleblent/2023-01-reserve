@@ -597,7 +597,7 @@ contract BasketHandlerP0 is ComponentP0, IBasketHandler {
     }
 
     /// Require that erc20s is a valid collateral array
-    function requireValidCollArray(IERC20[] calldata erc20s) internal view {
+    function requireValidCollArray(IERC20[] calldata erc20s) internal view { // @halborn-audit: this fixes the setPrimeBasket() issue
         IERC20 rsr = main.rsr();
         IERC20 rToken = IERC20(address(main.rToken()));
         IERC20 stRSR = IERC20(address(main.stRSR()));

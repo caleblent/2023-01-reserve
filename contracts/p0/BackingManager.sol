@@ -44,7 +44,7 @@ contract BackingManagerP0 is TradingP0, IBackingManager {
     /// @custom:interaction
     function grantRTokenAllowance(IERC20 erc20) external notPausedOrFrozen {
         require(main.assetRegistry().isRegistered(erc20), "erc20 unregistered");
-        erc20.safeApprove(address(main.rToken()), 0);
+        erc20.safeApprove(address(main.rToken()), 0); // @halborn-audit: this addresses HAL-08
         erc20.safeApprove(address(main.rToken()), type(uint256).max);
     }
 
