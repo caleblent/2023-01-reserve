@@ -58,7 +58,7 @@ contract BrokerP1 is ComponentP1, IBroker {
         require(
             address(tradeImplementation_) != address(0),
             "invalid Trade Implementation address"
-        );
+        ); // @ackee-audit: 0-address checks added
         __Component_init(main_);
 
         backingManager = main_.backingManager();

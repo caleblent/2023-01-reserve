@@ -71,7 +71,7 @@ contract FurnaceP1 is ComponentP1, IFurnace {
         if (uint48(block.timestamp) < uint64(lastPayout) + period) return;
 
         // # of whole periods that have passed since lastPayout
-        uint48 numPeriods = uint48((block.timestamp) - lastPayout) / period;
+        uint48 numPeriods = uint48((block.timestamp) - lastPayout) / period; // @ackee-audit: upgraded to 48 rather than 32 bit timestamp (which would end in 2106)
 
         // Paying out the ratio r, N times, equals paying out the ratio (1 - (1-r)^N) 1 time.
         uint192 payoutRatio = FIX_ONE.minus(FIX_ONE.minus(ratio).powu(numPeriods));

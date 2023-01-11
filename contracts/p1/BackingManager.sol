@@ -86,6 +86,8 @@ contract BackingManagerP1 is TradingP1, IBackingManager {
         _manageTokens(erc20s);
     }
 
+    // @audit: I cannot find a single instance of this method used in the entire codebase or even mentioned in the docs
+    //         What is the utility of a function like this? Why does it need to be in sorted order?
     /// Mointain the overall backing policy; handout assets otherwise
     /// @dev Tokens must be in sorted order!
     /// @dev Performs a uniqueness check on the erc20s list in O(n)
@@ -94,7 +96,7 @@ contract BackingManagerP1 is TradingP1, IBackingManager {
     // effect: _manageTokens(erc20s)
     function manageTokensSortedOrder(IERC20[] calldata erc20s) external notPausedOrFrozen {
         // Token list must not contain duplicates
-        require(ArrayLib.sortedAndAllUnique(erc20s), "duplicate/unsorted tokens");
+        require(ArrayLib.sortedAndAllUnique(erc20s), "duplicate/unsorted tokens"); // @audit: how do they become sorted? If they're unsorted, is it impossible for this function (or a similar one) to be called?
         _manageTokens(erc20s);
     }
 

@@ -26,7 +26,7 @@ contract RevenueTraderP1 is TradingP1, IRevenueTrader {
         uint192 maxTradeSlippage_,
         uint192 minTradeVolume_
     ) external initializer {
-        require(address(tokenToBuy_) != address(0), "invalid token address");
+        require(address(tokenToBuy_) != address(0), "invalid token address"); // @ackee-audit: 0-address check added
         __Component_init(main_);
         __Trading_init(main_, maxTradeSlippage_, minTradeVolume_);
         assetRegistry = main_.assetRegistry();

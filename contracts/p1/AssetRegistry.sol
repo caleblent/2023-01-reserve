@@ -134,7 +134,7 @@ contract AssetRegistryP1 is ComponentP1, IAssetRegistry {
     function getRegistry() external view returns (Registry memory reg) {
         uint256 length = _erc20s.length();
         reg.erc20s = new IERC20[](length);
-        reg.assets = new IAsset[](length);
+        reg.assets = new IAsset[](length); // @audit: can the length of erc20s and assets be different lengths? I don't think so
         for (uint256 i = 0; i < length; ++i) {
             reg.erc20s[i] = IERC20(_erc20s.at(i));
             reg.assets[i] = assets[IERC20(_erc20s.at(i))];

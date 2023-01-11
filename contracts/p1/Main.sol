@@ -29,7 +29,7 @@ contract MainP1 is Versioned, Initializable, Auth, ComponentRegistry, UUPSUpgrad
         uint48 shortFreeze_,
         uint48 longFreeze_
     ) public virtual initializer {
-        require(address(rsr_) != address(0), "invalid RSR address");
+        require(address(rsr_) != address(0), "invalid RSR address"); // @ackee-audit: 0-address check added
         __Auth_init(shortFreeze_, longFreeze_);
         __ComponentRegistry_init(components);
         __UUPSUpgradeable_init();
