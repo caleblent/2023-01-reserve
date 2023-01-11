@@ -47,7 +47,7 @@ interface IAssetRegistry is IComponent {
     function isRegistered(IERC20 erc20) external view returns (bool);
 
     /// @return A list of all registered ERC20s
-    function erc20s() external view returns (IERC20[] memory);
+    function erc20s() external view returns (IERC20[] memory); // @audit: is it possible for this array to become so big the gas block limit prevents it from returning anything?
 
     /// @return reg The list of registered ERC20s and Assets, in the same order
     function getRegistry() external view returns (Registry memory reg);

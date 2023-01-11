@@ -45,7 +45,7 @@ interface IRToken is
     /// @param endId The index _after_ the last of the cancelled issuances in the account's queue
     /// @param amount {qRTok} The amount of RTokens canceled
     /// That is, id was cancelled iff firstId <= id < endId
-    event IssuancesCanceled(
+    event IssuancesCanceled( // @audit: typo?? Should be 'IssuancesCancelled'
         address indexed recipient,
         uint256 indexed firstId,
         uint256 indexed endId,

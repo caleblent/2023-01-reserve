@@ -253,7 +253,7 @@ contract BasketHandlerP0 is ComponentP0, IBasketHandler {
 
     /// @return Whether this contract owns enough collateral to cover rToken.basketsNeeded() BUs
     /// ie, whether the protocol is currently fully collateralized
-    function fullyCollateralized() external view returns (bool) {
+    function fullyCollateralized() external view returns (bool) { // @audit: if this function returns false, what happens? Does it freeze functionality of anything? Does it lock funds up until something gets it to return true?
         return basketsHeldBy(address(main.backingManager())) >= main.rToken().basketsNeeded();
     }
 

@@ -117,7 +117,7 @@ contract BackingManagerP0 is TradingP0, IBackingManager {
     }
 
     /// Send excess assets to the RSR and RToken traders
-    function handoutExcessAssets(IERC20[] calldata erc20s) private {
+    function handoutExcessAssets(IERC20[] calldata erc20s) private { // @audit: lots of potential for this to screw up
         assert(main.basketHandler().status() == CollateralStatus.SOUND);
 
         // Special-case RSR to forward to StRSR pool
