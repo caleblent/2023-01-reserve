@@ -14,8 +14,8 @@ contract DistributorP1 is ComponentP1, IDistributor {
     using FixLib for uint192;
     using EnumerableSet for EnumerableSet.AddressSet;
 
-    EnumerableSet.AddressSet internal destinations;
-    mapping(address => RevenueShare) public distribution;
+    EnumerableSet.AddressSet internal destinations; // storage slot 1 (doesnt' count?)
+    mapping(address => RevenueShare) public distribution; // storage slot 2 (doesn't count?)
 
     // ==== Invariants ====
     // distribution is nonzero. (That is, distribution has at least one nonzero value)
@@ -33,10 +33,10 @@ contract DistributorP1 is ComponentP1, IDistributor {
 
     uint8 public constant MAX_DESTINATIONS_ALLOWED = 100;
 
-    IERC20 private rsr;
-    IERC20 private rToken;
-    address private furnace;
-    address private stRSR;
+    IERC20 private rsr; // storage slot 3
+    IERC20 private rToken; // storage slot 4
+    address private furnace; // storage slot 5
+    address private stRSR; // storage slot 6
 
     function init(IMain main_, RevenueShare calldata dist) external initializer {
         __Component_init(main_);

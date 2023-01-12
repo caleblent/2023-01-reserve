@@ -28,16 +28,16 @@ contract StRSRP1Votes is StRSRP1, IStRSRVotes {
         keccak256("Delegation(address delegatee,uint256 nonce,uint256 expiry)");
 
     // _delegates[account] is the address of the delegate that `accountt` has specified
-    mapping(address => address) private _delegates;
+    mapping(address => address) private _delegates; // storage slot 1
 
     // era history
-    Checkpoint[] private _eras; // {era}
+    Checkpoint[] private _eras; // {era} // storage slot 2
 
     // {era} => ...
     // `_checkpoints[era][account]` is the history of voting power of `account` during era `era`
-    mapping(uint256 => mapping(address => Checkpoint[])) private _checkpoints; // {qStRSR}
+    mapping(uint256 => mapping(address => Checkpoint[])) private _checkpoints; // {qStRSR} // storage slot 3
     // `_totalSupplyCheckpoints[era]` is the history of totalSupply values during era `era`
-    mapping(uint256 => Checkpoint[]) private _totalSupplyCheckpoints; // {qStRSR}
+    mapping(uint256 => Checkpoint[]) private _totalSupplyCheckpoints; // {qStRSR} // storage slot 4s
 
     // When RSR is seized, stakeholders are divested not only of their economic position,
     // but also of their governance position.
@@ -224,5 +224,5 @@ contract StRSRP1Votes is StRSRP1, IStRSRVotes {
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
-    uint256[46] private __gap;
+    uint256[46] private __gap; // 50 - 4 = 46
 }

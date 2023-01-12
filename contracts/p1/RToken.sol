@@ -41,13 +41,13 @@ contract RTokenP1 is ComponentP1, ERC20PermitUpgradeable, IRToken {
     ///
     /// The mandate may also be a URI to a longer body of text, presumably on IPFS or some other
     /// immutable data store.
-    string public mandate;
+    string public mandate; // storage slot 1
 
     // ==== Governance Params ====
 
     // D18{1} fraction of supply that may be issued per block
     // Always, issuanceRate <= MAX_ISSUANCE_RATE = FIX_ONE
-    uint192 public issuanceRate;
+    uint192 public issuanceRate; // storage slot 2
 
     // the following governance parameters exist inside the Battery struct:
     //      battery.redemptionRateFloor
@@ -56,25 +56,25 @@ contract RTokenP1 is ComponentP1, ERC20PermitUpgradeable, IRToken {
     // ==== End Governance Params ====
 
     // ==== Peer components ====
-    IAssetRegistry private assetRegistry;
-    IBasketHandler private basketHandler;
-    IBackingManager private backingManager;
-    IFurnace private furnace;
+    IAssetRegistry private assetRegistry; // storage slot 3
+    IBasketHandler private basketHandler; // storage slot 4
+    IBackingManager private backingManager; // storage slot 5
+    IFurnace private furnace; // storage slot 6
 
     // The number of baskets that backingManager must hold
     // in order for this RToken to be fully collateralized.
     // The exchange rate for issuance and redemption is totalSupply()/basketsNeeded {BU}/{qRTok}.
-    uint192 public basketsNeeded; // D18{BU}
+    uint192 public basketsNeeded; // D18{BU} // storage slot 7
 
     // ==== Slow Issuance State====
 
     // When all pending issuances will have vested.
-    uint192 private allVestAt; // D18{fractional block number}
+    uint192 private allVestAt; // D18{fractional block number} // storage slot 8
 
     // Enforce a fixed issuanceRate throughout the entire block by caching it.
     // Both of these MUST only be modified by whenFinished()
-    uint192 private lastIssRate; // D18{rTok/block}
-    uint256 private lastIssRateBlock; // {block number}
+    uint192 private lastIssRate; // D18{rTok/block} // storage slot 9
+    uint256 private lastIssRateBlock; // {block number} // storage slot 10
 
     // IssueItem: One edge of an issuance
     struct IssueItem {
@@ -92,14 +92,14 @@ contract RTokenP1 is ComponentP1, ERC20PermitUpgradeable, IRToken {
         IssueItem[] items; // The actual items (The issuance "fenceposts")
     }
 
-    mapping(address => IssueQueue) public issueQueues;
+    mapping(address => IssueQueue) public issueQueues; // storage slot 11
 
     // Redemption throttle
-    RedemptionBatteryLib.Battery private battery;
+    RedemptionBatteryLib.Battery private battery; // storage slot 12
 
     // {ERC20: {qTok} owed to Recipients}
     // During reward sweeping, we sweep token balances - liabilities
-    mapping(IERC20 => uint256) private liabilities;
+    mapping(IERC20 => uint256) private liabilities; // storage slot 13
 
     // For an initialized IssueQueue queue:
     //     queue.right >= left
@@ -842,5 +842,5 @@ contract RTokenP1 is ComponentP1, ERC20PermitUpgradeable, IRToken {
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
-    uint256[37] private __gap;
+    uint256[37] private __gap; // 50 - 13 = 37
 }

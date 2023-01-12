@@ -16,9 +16,9 @@ contract RevenueTraderP1 is TradingP1, IRevenueTrader {
     using SafeERC20Upgradeable for IERC20Upgradeable;
 
     // Immutable after init()
-    IERC20 public tokenToBuy;
-    IAssetRegistry private assetRegistry;
-    IDistributor private distributor;
+    IERC20 public tokenToBuy; // storage slot 1
+    IAssetRegistry private assetRegistry; // storage slot 2
+    IDistributor private distributor; // storage slot 3
 
     function init(
         IMain main_,
@@ -98,5 +98,5 @@ contract RevenueTraderP1 is TradingP1, IRevenueTrader {
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
-    uint256[47] private __gap;
+    uint256[47] private __gap; // 50 - 3 storage slots = 47
 }

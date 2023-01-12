@@ -39,38 +39,38 @@ abstract contract StRSRP1 is Initializable, ComponentP1, IStRSR, EIP712Upgradeab
     uint192 public constant MAX_REWARD_RATIO = FIX_ONE; // {1} 100%
 
     // === ERC20 ===
-    string public name; // mutable
-    string public symbol; // mutable
+    string public name; // mutable // storage slot 1
+    string public symbol; // mutable // storage slot 2
     // solhint-disable const-name-snakecase
-    uint8 public constant decimals = 18;
+    uint8 public constant decimals = 18; // storage slot 3
 
     // Component addresses, immutable after init()
-    IAssetRegistry private assetRegistry;
-    IBackingManager private backingManager;
-    IBasketHandler private basketHandler;
-    IERC20 private rsr;
+    IAssetRegistry private assetRegistry; // storage slot 3
+    IBackingManager private backingManager; // storage slot 4
+    IBasketHandler private basketHandler; // storage slot 5
+    IERC20 private rsr; // storage slot 6
 
     /// === Financial State: Stakes (balances) ===
     // Era. If stake balances are wiped out due to RSR seizure, increment the era to zero balances.
     // Only ever directly written by beginEra()
-    uint256 internal era;
+    uint256 internal era; // storage slot 7
 
     // Typically: "balances". These are the tokenized staking positions!
     // era => ({account} => {qStRSR})
-    mapping(uint256 => mapping(address => uint256)) private stakes; // Stakes per account {qStRSR}
-    uint256 internal totalStakes; // Total of all stakes {qStRSR}
-    uint256 internal stakeRSR; // Amount of RSR backing all stakes {qRSR}
-    uint192 public stakeRate; // The exchange rate between stakes and RSR. D18{qStRSR/qRSR}
+    mapping(uint256 => mapping(address => uint256)) private stakes; // Stakes per account {qStRSR} // storage slot 8
+    uint256 internal totalStakes; // Total of all stakes {qStRSR} // storage slot 9
+    uint256 internal stakeRSR; // Amount of RSR backing all stakes {qRSR} // storage slot 10
+    uint192 public stakeRate; // The exchange rate between stakes and RSR. D18{qStRSR/qRSR} // storage slot 11
 
     uint192 private constant MAX_STAKE_RATE = 1e9 * FIX_ONE; // 1e9 D18{qStRSR/qRSR}
 
     // era => (owner => (spender => {qStRSR}))
-    mapping(uint256 => mapping(address => mapping(address => uint256))) private _allowances;
+    mapping(uint256 => mapping(address => mapping(address => uint256))) private _allowances; // storage slot 12
 
     // === Financial State: Drafts ===
     // Era. If drafts get wiped out due to RSR seizure, increment the era to zero draft values.
     // Only ever directly written by beginDraftEra()
-    uint256 internal draftEra;
+    uint256 internal draftEra; // storage slot 13
     // Drafts: share of the withdrawing tokens. Not transferrable and not revenue-earning.
     struct CumulativeDraft {
         // Avoid re-using uint192 in order to avoid confusion with our type system; 176 is enough
@@ -78,11 +78,11 @@ abstract contract StRSRP1 is Initializable, ComponentP1, IStRSR, EIP712Upgradeab
         uint64 availableAt; // When the last of the drafts will become available
     }
     // draftEra => ({account} => {drafts})
-    mapping(uint256 => mapping(address => CumulativeDraft[])) public draftQueues; // {drafts}
-    mapping(uint256 => mapping(address => uint256)) public firstRemainingDraft; // draft index
-    uint256 internal totalDrafts; // Total of all drafts {qDrafts}
-    uint256 internal draftRSR; // Amount of RSR backing all drafts {qRSR}
-    uint192 public draftRate; // The exchange rate between drafts and RSR. D18{qDrafts/qRSR}
+    mapping(uint256 => mapping(address => CumulativeDraft[])) public draftQueues; // {drafts} // storage slot 14
+    mapping(uint256 => mapping(address => uint256)) public firstRemainingDraft; // draft index // storage slot 15
+    uint256 internal totalDrafts; // Total of all drafts {qDrafts} // storage slot 16
+    uint256 internal draftRSR; // Amount of RSR backing all drafts {qRSR} // storage slot 17
+    uint192 public draftRate; // The exchange rate between drafts and RSR. D18{qDrafts/qRSR} // storage slot 18
 
     uint192 private constant MAX_DRAFT_RATE = 1e9 * FIX_ONE; // 1e9 D18{qDrafts/qRSR}
 
@@ -120,7 +120,7 @@ abstract contract StRSRP1 is Initializable, ComponentP1, IStRSR, EIP712Upgradeab
     //               (ie, draftRSR covers totalDrafts at draftRate)
     //
     // === ERC20Permit ===
-    mapping(address => CountersUpgradeable.Counter) private _nonces;
+    mapping(address => CountersUpgradeable.Counter) private _nonces; // storage slot 20
 
     // solhint-disable-next-line var-name-mixedcase
     bytes32 private constant _PERMIT_TYPEHASH =
@@ -131,9 +131,9 @@ abstract contract StRSRP1 is Initializable, ComponentP1, IStRSR, EIP712Upgradeab
     // ==== Gov Params ====
     // Promise: Each gov param is set _only_ by the appropriate "set" function.
     // Invariant: rewardPeriod * 2 <= unstakingDelay
-    uint48 public unstakingDelay; // {s} The minimum length of time spent in the draft queue
-    uint48 public rewardPeriod; // {s} The number of seconds between revenue payout events
-    uint192 public rewardRatio; // {1} The fraction of the revenue balance to handout per period
+    uint48 public unstakingDelay; // {s} The minimum length of time spent in the draft queue // storage slot 21
+    uint48 public rewardPeriod; // {s} The number of seconds between revenue payout events // storage slot 21
+    uint192 public rewardRatio; // {1} The fraction of the revenue balance to handout per period // storage slot 22
 
     // === Rewards Cache ===
     // Promise: The two *payout* vars are modified only by init() and _payoutRewards()
@@ -144,10 +144,10 @@ abstract contract StRSRP1 is Initializable, ComponentP1, IStRSR, EIP712Upgradeab
     //     rsrRewardsAtLastPayout was the value of rsrRewards() at that time
 
     // {seconds} The last time when rewards were paid out
-    uint48 public payoutLastPaid;
+    uint48 public payoutLastPaid; // storage slot 22
 
     // {qRSR} How much reward RSR was held the last time rewards were paid out
-    uint256 internal rsrRewardsAtLastPayout;
+    uint256 internal rsrRewardsAtLastPayout; // storage slot 23
 
     // ======================
 

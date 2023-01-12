@@ -117,26 +117,26 @@ contract BasketHandlerP1 is ComponentP1, IBasketHandler {
     uint192 public constant MAX_TARGET_AMT = 1e3 * FIX_ONE; // {target/BU} max basket weight
 
     // Peer components
-    IAssetRegistry private assetRegistry;
-    IBackingManager private backingManager;
-    IERC20 private rsr;
-    IRToken private rToken;
-    IStRSR private stRSR;
+    IAssetRegistry private assetRegistry; // storage slot 1
+    IBackingManager private backingManager; // storage slot 2
+    IERC20 private rsr; // storage slot 3
+    IRToken private rToken; // storage slot 4
+    IStRSR private stRSR; // storage slot 5
 
     // config is the basket configuration, from which basket will be computed in a basket-switch
     // event. config is only modified by governance through setPrimeBakset and setBackupConfig
-    BasketConfig private config;
+    BasketConfig private config; // storage slot 6
 
     // basket, disabled, nonce, and timestamp are only ever set by `_switchBasket()`
     // basket is the current basket.
-    Basket private basket;
+    Basket private basket; // storage slot 7
 
-    uint48 public override nonce; // A unique identifier for this basket instance
-    uint48 public override timestamp; // The timestamp when this basket was last set
+    uint48 public override nonce; // A unique identifier for this basket instance // storage slot 8
+    uint48 public override timestamp; // The timestamp when this basket was last set // storage slot 8
 
     // If disabled is true, status() is DISABLED, the basket is invalid,
     // and everything except redemption should be paused.
-    bool private disabled;
+    bool private disabled; // storage slot 8
 
     // ==== Invariants ====
     // basket is a valid Basket:
@@ -735,5 +735,5 @@ contract BasketHandlerP1 is ComponentP1, IBasketHandler {
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
-    uint256[42] private __gap;
+    uint256[42] private __gap; // 50 - 8 = 42
 }

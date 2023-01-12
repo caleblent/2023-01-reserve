@@ -15,12 +15,12 @@ contract FurnaceP1 is ComponentP1, IFurnace {
     uint192 public constant MAX_RATIO = FIX_ONE; // {1} 100%
     uint48 public constant MAX_PERIOD = 31536000; // {s} 1 year
 
-    uint192 public ratio; // {1} What fraction of balance to melt each period
-    uint48 public period; // {seconds} How often to melt
-    uint256 public lastPayoutBal; // {qRTok} The balance of RToken at the last payout
-    uint48 public lastPayout; // {seconds} The last time we did a payout
+    uint192 public ratio; // {1} What fraction of balance to melt each period // storage slot 1
+    uint48 public period; // {seconds} How often to melt // storage slot 1
+    uint256 public lastPayoutBal; // {qRTok} The balance of RToken at the last payout // storage slot 2
+    uint48 public lastPayout; // {seconds} The last time we did a payout // storage slot 3
 
-    IRToken private rToken;
+    IRToken private rToken; // storage slot 3
 
     // ==== Invariants ====
     // ratio <= MAX_RATIO = 1e18
@@ -105,5 +105,5 @@ contract FurnaceP1 is ComponentP1, IFurnace {
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
-    uint256[47] private __gap;
+    uint256[47] private __gap; // 50 - 3 = 47
 }

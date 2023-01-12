@@ -23,25 +23,25 @@ contract BrokerP1 is ComponentP1, IBroker {
 
     uint48 public constant MAX_AUCTION_LENGTH = 604800; // {s} max valid duration - 1 week
 
-    IBackingManager private backingManager;
-    IRevenueTrader private rsrTrader;
-    IRevenueTrader private rTokenTrader;
+    IBackingManager private backingManager; // storage slot 1
+    IRevenueTrader private rsrTrader; // storage slot 2
+    IRevenueTrader private rTokenTrader; // storage slot 3
 
     // The trade contract to clone on openTrade(). Immutable after init.
-    ITrade public tradeImplementation;
+    ITrade public tradeImplementation; // storage slot 4
 
     // The Gnosis contract to init each trade with. Immutable after init.
-    IGnosis public gnosis;
+    IGnosis public gnosis; // storage slot 5
 
     // {s} the length of an auction. Governance parameter.
-    uint48 public auctionLength;
+    uint48 public auctionLength; // storage slot 6
 
     // Whether trading is disabled.
     // Initially false. Settable by OWNER. A trade clone can set it to true via reportViolation()
-    bool public disabled;
+    bool public disabled; // storage slot 6
 
     // The set of ITrade (clone) addresses this contract has created
-    mapping(address => bool) private trades;
+    mapping(address => bool) private trades; // storage slot 7 (but not counted because the slot is empty)
 
     // ==== Invariant ====
     // (trades[addr] == true) iff this contract has created an ITrade clone at addr
@@ -150,5 +150,5 @@ contract BrokerP1 is ComponentP1, IBroker {
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
-    uint256[44] private __gap;
+    uint256[44] private __gap; // 50 - 6 = 44
 }

@@ -16,7 +16,7 @@ import "../mixins/Versioned.sol";
  */
 // solhint-disable max-states-count
 contract MainP1 is Versioned, Initializable, Auth, ComponentRegistry, UUPSUpgradeable, IMain {
-    IERC20 public rsr;
+    IERC20 public rsr; // storage slot 1
 
     /// @custom:oz-upgrades-unsafe-allow constructor
     // solhint-disable-next-line no-empty-blocks
@@ -68,5 +68,5 @@ contract MainP1 is Versioned, Initializable, Auth, ComponentRegistry, UUPSUpgrad
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
-    uint256[49] private __gap;
+    uint256[49] private __gap; // 50 - 1 = 49
 }

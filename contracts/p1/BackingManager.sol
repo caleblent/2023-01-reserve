@@ -22,19 +22,19 @@ contract BackingManagerP1 is TradingP1, IBackingManager {
     using SafeERC20Upgradeable for IERC20Upgradeable;
 
     // Cache of peer components
-    IAssetRegistry private assetRegistry;
-    IBasketHandler private basketHandler;
-    IDistributor private distributor;
-    IRToken private rToken;
-    IERC20 private rsr;
-    IStRSR private stRSR;
-    IRevenueTrader private rsrTrader;
-    IRevenueTrader private rTokenTrader;
-    uint48 public constant MAX_TRADING_DELAY = 31536000; // {s} 1 year
-    uint192 public constant MAX_BACKING_BUFFER = FIX_ONE; // {1} 100%
+    IAssetRegistry private assetRegistry; // storage slot 1
+    IBasketHandler private basketHandler; // storage slot 2
+    IDistributor private distributor; // storage slot 3
+    IRToken private rToken; // storage slot 4
+    IERC20 private rsr; // storage slot 5
+    IStRSR private stRSR; // storage slot 6
+    IRevenueTrader private rsrTrader; // storage slot 7
+    IRevenueTrader private rTokenTrader; // storage slot 8
+    uint48 public constant MAX_TRADING_DELAY = 31536000; // {s} 1 year // storage slot - (constant)
+    uint192 public constant MAX_BACKING_BUFFER = FIX_ONE; // {1} 100% // storage slot - (constant)
 
-    uint48 public tradingDelay; // {s} how long to wait until resuming trading after switching
-    uint192 public backingBuffer; // {%} how much extra backing collateral to keep
+    uint48 public tradingDelay; // {s} how long to wait until resuming trading after switching // storage slot 9
+    uint192 public backingBuffer; // {%} how much extra backing collateral to keep // storage slot 9
 
     // ==== Invariants ====
     // tradingDelay <= MAX_TRADING_DELAY and backingBuffer <= MAX_BACKING_BUFFER
@@ -273,5 +273,5 @@ contract BackingManagerP1 is TradingP1, IBackingManager {
      * variables without shifting down storage in the inheritance chain.
      * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
      */
-    uint256[41] private __gap;
+    uint256[41] private __gap; // 50 - 9 = 41
 }
