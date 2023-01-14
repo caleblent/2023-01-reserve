@@ -1,0 +1,7 @@
+From the docs (collateral.md):
+
+Defaulted Collateral must stay defaulted.
+If status() ever returns CollateralStatus.DISABLED, then it must always return CollateralStatus.DISABLED in the future.
+
+// Is there a way to set the status to IFFY or SOUND again, after it has been
+// set to disabled in the past? If so, that's a medium/high severity issue

@@ -276,6 +276,10 @@ contract BasketHandlerP1 is ComponentP1, IBasketHandler {
 
     /// @return status_ The status of the basket
     // returns DISABLED if disabled == true, and worst(status(coll)) otherwise
+    // @audit: If I'm reading the collateralization.md docs right, if this status() method EVER returns
+    // a CollateralStatus.DISABLED, it is supposed to STAY disabled FOREVER. I'm not seeing that that's
+    // the case here. It looks like it could return DISABLED and then SOUND or IFFY later one, which is
+    // not allowed according to the docs.
     function status() public view returns (CollateralStatus status_) {
         uint256 size = basket.erc20s.length;
 
