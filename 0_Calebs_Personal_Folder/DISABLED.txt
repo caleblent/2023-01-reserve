@@ -5,3 +5,11 @@ If status() ever returns CollateralStatus.DISABLED, then it must always return C
 
 // Is there a way to set the status to IFFY or SOUND again, after it has been
 // set to disabled in the past? If so, that's a medium/high severity issue
+
+FOUND: in the "function markStatus(CollateralStatus status_) internal {" of
+FiatCollateral.sol, there is this check on line 183:
+	  if (_whenDefault <= block.timestamp) return; // prevent DISABLED -> SOUND/IFFY
+on lines 194-196, this is what sets it so:
+	} else if (status_ == CollateralStatus.DISABLED) {
+            _whenDefault = uint48(block.timestamp);
+        }
